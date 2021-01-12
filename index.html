@@ -17,8 +17,8 @@
 
           <h1 class="red">BOOLFLIX</h1>
           <div class="form">
-              <input type="text" name="" value="" placeholder="Fai una ricerca">
-              <button type="button" name="button"> Cerca</button>
+              <input type="text" name="" value="" placeholder="Fai una ricerca" v-model="keyWord">
+              <button type="button" name="button" @click="searchMovies"> Cerca</button>
           </div>
 
         </div>
@@ -28,24 +28,11 @@
       <main>
         <div class="container d-flex">
 
-          <div class="card">
+          <div class="card" v-for="movie in movies">
 
-          </div>
-          <div class="card">
-
-          </div>
-
-          <div class="card">
 
           </div>
 
-          <div class="card">
-
-          </div>
-
-          <div class="card">
-
-          </div>
 
         </div>
       </main>

@@ -21,7 +21,7 @@ let app = new Vue({
     searchMovies() {
       axios.get('https://api.themoviedb.org/3/search/movie?api_key=d9ce04e79902ad058413bc81c0963304&language=it-IT&query=' + this.keyWord + '&page=1&include_adult=false')
       .then(response => {
-        this.movies.push(response.data.results);
+        this.movies = (response.data.results);
         console.log(this.movies);
       });
     }

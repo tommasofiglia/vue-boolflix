@@ -28,6 +28,10 @@ body{
   color: red;
 }
 
+.white{
+  color: white;
+}
+
 /* Header */
 header{
   background-color: black;

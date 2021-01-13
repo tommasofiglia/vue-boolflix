@@ -30,10 +30,14 @@
 
           <div class="card" v-for="movie in movies">
 
-              <img v-if="movie.poster_path != 'null'" :src="'https://image.tmdb.org/t/p/w500' + movie.poster_path" alt="" class="preview" >
-              <div v-if="movie.poster_path == null" class="white no_poster_path d-flex" class="preview">
-                <p>ANTEPRIMA <br> NON <br>DISPONIBILE</p>
+              <div class="poster">
+                <img v-if="movie.poster_path != 'null'" :src="'https://image.tmdb.org/t/p/w500' + movie.poster_path" alt="" class="preview" >
+                <div v-if="movie.poster_path == null" class="white no_poster_path d-flex" class="preview">
+                  <p>{{movie.title}}</p>
+                  <!-- <p>ANTEPRIMA <br> NON <br>DISPONIBILE</p> -->
+                </div>
               </div>
+
               <div class="movie_infos">
                 <h3 class="white ">{{movie.title}}</h3>
                 <p class="white ">{{movie.original_title}}</p>

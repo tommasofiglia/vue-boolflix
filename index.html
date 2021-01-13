@@ -49,8 +49,8 @@
                 <!-- Parte riguardante il voto medio -->
                 <div class="white" v-if="movie.vote_average !=0">
                   <span>Voto medio: {{movie.vote_average}}</span>
-                  <i class="fas fa-star" v-for="stars in movie.starsVote"> </i>
-                  <i class="far fa-star" v-for="stars in 5-movie.starsVote"> </i>
+                  <i class="fas fa-star" v-for="stars in movie.starsVote">
+                  </i><i class="far fa-star" v-for="stars in 5-movie.starsVote" class="stelle_vuote"></i>
                 </div>
 
                 <div class="white" v-if="movie.vote_average == 0">

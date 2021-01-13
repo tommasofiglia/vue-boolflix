@@ -18,7 +18,8 @@ let app = new Vue({
   data: {
     keyWord:"",
     hover: true,
-    movies: []
+    movies: [],
+    tvSeries:[]
   },
   methods:{
     searchMovies() {
@@ -37,6 +38,7 @@ let app = new Vue({
 
           let flags = item.original_language;
           item.flagsNames = flags;
+
           // Casi particolari, li gestisco con switch case.
           switch (item.original_language) {
             case "en":
@@ -60,7 +62,6 @@ let app = new Vue({
             case "he":
               item.flagsNames = "ca";
               break;
-
           }
 
           let stars = Math.floor(item.vote_average/2);

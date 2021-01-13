@@ -28,13 +28,49 @@ let app = new Vue({
         console.log(this.movies);
         console.log(response);
 
-        this.movies.forEach(item => {
-          let stars = Math.floor(item.vote_average/2);
-        return item.starsVote = stars;
-        });
+        // Ciclo for Each dentro all'array movies grazie al quale:
+        // - Creo una nuova proprietà per gli oggetti che conteniene il numero di stelle da stampare a schermo corrispondenti alla votazione media.
+        // - Creo una nuova proprietà per gli oggetti di movies contenente le sigle delle bandiere corrette per utilizzare l'API di countryflags.io
 
+        this.movies.forEach(item => {
+          // Copio ciò che c'è scritto in original_language in flagsNames , dopodiché vedo se ci sono casi in cui al nome delle bandiere nell'API delle bandiere non corrisponde il nome del linguaggio originale. Sostituisco quei casi particolari in modo tale che il richiamo al link che contiene l'API (Effettuato nell'src dell'immagine tramite :src) funzioni.
+
+          let flags = item.original_language;
+          item.flagsNames = flags;
+          // Casi particolari, li gestisco con switch case.
+          switch (item.original_language) {
+            case "en":
+              item.flagsNames = "gb";
+              break;
+            case "ko":
+              item.flagsNames = "kr";
+              break;
+            case "ja":
+              item.flagsNames = "jp";
+              break;
+            case "zh":
+              item.flagsNames = "cn";
+              break;
+            case "da":
+              item.flagsNames = "dk";
+              break;
+            case "cs":
+              item.flagsNames = "se";
+              break;
+            case "he":
+              item.flagsNames = "ca";
+              break;
+
+          }
+
+          let stars = Math.floor(item.vote_average/2);
+          return item.starsVote = stars;
+
+        });
 
       });
     }
+  },
+  mounted(){
   }
 });

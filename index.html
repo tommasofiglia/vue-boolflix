@@ -44,11 +44,14 @@
               <div class="movie_infos">
                 <h3 class="white">{{movie.title}}</h3>
                 <p class="white">{{movie.original_title}}</p>
-                <div class="white">Lingua originale: {{movie.original_language}}</div>
+                <div class="white">Lingua originale:
+                  <span class="original_lang">{{movie.original_language}}</span>
+                  <img :src="'https://www.countryflags.io/' + movie.flagsNames + '/flat/16.png'" alt="">
+                </div>
 
                 <!-- Parte riguardante il voto medio -->
                 <div class="white" v-if="movie.vote_average !=0">
-                  <span>Voto medio: {{movie.vote_average}}</span>
+                  <span>Voto medio: {{movie.vote_average}}/10</span>
                   <i class="fas fa-star" v-for="stars in movie.starsVote">
                   </i><i class="far fa-star" v-for="stars in 5-movie.starsVote" class="stelle_vuote"></i>
                 </div>

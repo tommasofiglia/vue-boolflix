@@ -112,6 +112,10 @@ main .movie_infos i{
   margin-right: 1px;
 }
 
+main .movie_infos .original_lang{
+  text-transform: uppercase;
+}
+
 /* Imposto che in hover i poster(o le path sostitutive nel caso in cui i poster non ci siano) si opacizzino lasciano spazio alle movie_infos */
 
 main .poster:hover img{

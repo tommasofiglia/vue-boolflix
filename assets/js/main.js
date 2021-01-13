@@ -62,6 +62,16 @@ let app = new Vue({
             case "he":
               item.flagsNames = "ca";
               break;
+            case "fa":
+              item.flagsNames = "ir";
+              break;
+            case "hi":
+              item.flagsNames = "in";
+              break;
+            case "ur":
+              item.flagsNames = "pk";
+              break;
+
           }
 
           let stars = Math.floor(item.vote_average/2);

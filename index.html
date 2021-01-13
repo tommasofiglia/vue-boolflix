@@ -15,7 +15,7 @@
       <header>
         <div class="container d-flex">
 
-          <h1 class="red">BOOLFLIX</h1>
+          <a href=""><img src="assets/img/logo.png" alt="" id="logo"></a>
           <div class="form">
               <input type="text" name="" value="" placeholder="Fai una ricerca" v-model="keyWord">
               <button type="button" name="button" @click="searchMovies"> Cerca</button>
@@ -29,7 +29,19 @@
         <div class="container d-flex">
 
           <div class="card" v-for="movie in movies">
-            <h2 class="white">{{movie.title}}</h2>
+
+              <img v-if="movie.poster_path != 'null'" :src="'https://image.tmdb.org/t/p/w500' + movie.poster_path" alt="" class="preview" >
+              <div v-if="movie.poster_path == null" class="white no_poster_path d-flex" class="preview">
+                <p>ANTEPRIMA <br> NON <br>DISPONIBILE</p>
+              </div>
+              <div class="movie_infos">
+                <h3 class="white ">{{movie.title}}</h3>
+                <p class="white ">{{movie.original_title}}</p>
+                <div class="white ">Lingua originale: {{movie.original_language}}</div>
+                <div class="white ">Voto medio: {{movie.vote_average}}</div>
+              </div>
+
+
           </div>
 
 

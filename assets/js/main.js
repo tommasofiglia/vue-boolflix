@@ -8,13 +8,14 @@
 // 3. Lingua
 // 4. Voto
 
-/******************* MILESTONE 2 **********************/
+/******************* MILESTONE 1 **********************/
 
 let app = new Vue({
-  // options object
+
   el: "#app",
   data: {
     keyWord:"",
+    hover: true,
     movies: []
   },
   methods:{
@@ -23,6 +24,7 @@ let app = new Vue({
       .then(response => {
         this.movies = (response.data.results);
         console.log(this.movies);
+        console.log(response);
       });
     }
   }

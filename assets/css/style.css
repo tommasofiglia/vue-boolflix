@@ -107,6 +107,11 @@ main .movie_infos{
   z-index: 1;
 }
 
+main .movie_infos i{
+  margin-left: 2px;
+  margin-right: 2px;
+}
+
 /* Imposto che in hover i poster(o le path sostitutive nel caso in cui i poster non ci siano) si opacizzino lasciano spazio alle movie_infos */
 
 main .poster:hover img{

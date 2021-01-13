@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
     <link rel="stylesheet" href="assets/css/style.css">
     <title>ESERCIZIO</title>
   </head>
@@ -24,33 +25,46 @@
         </div>
       </header>
 
-<!-- Inizio Main -->
+      <!-- Inizio Main -->
       <main>
         <div class="container d-flex">
 
           <div class="card" v-for="movie in movies">
 
+              <!-- Stampa dei poster/avviso di non presenza del poster a schermo -->
               <div class="poster">
                 <img v-if="movie.poster_path != 'null'" :src="'https://image.tmdb.org/t/p/w500' + movie.poster_path" alt="" class="preview" >
                 <div v-if="movie.poster_path == null" class="white no_poster_path d-flex" class="preview">
                   <p>{{movie.title}}</p>
-                  <!-- <p>ANTEPRIMA <br> NON <br>DISPONIBILE</p> -->
                 </div>
               </div>
+              <!-- /Stampa dei poster -->
 
+              <!-- Informazioni sui film -->
               <div class="movie_infos">
-                <h3 class="white ">{{movie.title}}</h3>
-                <p class="white ">{{movie.original_title}}</p>
-                <div class="white ">Lingua originale: {{movie.original_language}}</div>
-                <div class="white ">Voto medio: {{movie.vote_average}}</div>
-              </div>
+                <h3 class="white">{{movie.title}}</h3>
+                <p class="white">{{movie.original_title}}</p>
+                <div class="white">Lingua originale: {{movie.original_language}}</div>
 
+                <!-- Parte riguardante il voto medio -->
+                <div class="white" v-if="movie.vote_average !=0">
+                  <span>Voto medio: {{movie.vote_average}}</span>
+                  <i class="fas fa-star" v-for="stars in movie.starsVote"> </i>
+                  <i class="far fa-star" v-for="stars in 5-movie.starsVote"> </i>
+                </div>
+
+                <div class="white" v-if="movie.vote_average == 0">
+                  <span>Voto medio: NON DISPONIBILE</span>
+                </div>
+                <!-- /Parte rigurdante il voto medio -->
+              </div>
+              <!-- Fine informazioni sui film  -->
 
           </div>
 
-
         </div>
       </main>
+      <!-- Fine main -->
 
     </div>
 

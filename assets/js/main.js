@@ -80,7 +80,61 @@ let app = new Vue({
         });
 
       });
-    }
+    },
+    searchTvSeries() {
+      axios.get('https://api.themoviedb.org/3/search/tv?api_key=d9ce04e79902ad058413bc81c0963304&language=it_IT&query=' + this.keyWord)
+      .then(response => {
+        this.tvSeries = (response.data.results);
+        console.log(this.tvSeries);
+        console.log(response);
+
+        this.tvSeries.forEach(item => {
+
+          let flags = item.original_language;
+          item.flagsNames = flags;
+
+          // Casi particolari, li gestisco con switch case.
+          switch (item.original_language) {
+            case "en":
+              item.flagsNames = "gb";
+              break;
+            case "ko":
+              item.flagsNames = "kr";
+              break;
+            case "ja":
+              item.flagsNames = "jp";
+              break;
+            case "zh":
+              item.flagsNames = "cn";
+              break;
+            case "da":
+              item.flagsNames = "dk";
+              break;
+            case "cs":
+              item.flagsNames = "se";
+              break;
+            case "he":
+              item.flagsNames = "ca";
+              break;
+            case "fa":
+              item.flagsNames = "ir";
+              break;
+            case "hi":
+              item.flagsNames = "in";
+              break;
+            case "ur":
+              item.flagsNames = "pk";
+              break;
+
+          }
+
+          let stars = Math.floor(item.vote_average/2);
+          return item.starsVote = stars;
+
+        });
+
+      });
+    },
   },
   mounted(){
   }

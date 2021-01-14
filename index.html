@@ -19,7 +19,7 @@
           <a href=""><img src="assets/img/logo.png" alt="" id="logo"></a>
           <div class="form">
               <input type="text" name="" value="" placeholder="Fai una ricerca" v-model="keyWord">
-              <button type="button" name="button" @click="searchMovies"> Cerca</button>
+              <button type="button" name="button" @click=" searchMovies(); searchTvSeries()"> Cerca</button>
           </div>
 
         </div>
@@ -27,8 +27,10 @@
 
       <!-- Inizio Main -->
       <main>
-        <div class="container d-flex">
 
+        <!-- Parte film -->
+        <h2 class="white" v-if="movies.length !=0">RISULTATI IN FILM</h2>
+        <div class="container d-flex film">
           <div class="card" v-for="movie in movies">
 
               <!-- Stampa dei poster/avviso di non presenza del poster a schermo -->
@@ -57,6 +59,47 @@
                 </div>
 
                 <div class="white" v-if="movie.vote_average == 0">
+                  <span>Voto medio: NON DISPONIBILE</span>
+                </div>
+                <!-- /Parte rigurdante il voto medio -->
+              </div>
+              <!-- Fine informazioni sui film  -->
+
+          </div>
+
+        </div>
+
+        <!-- Parte serie tv -->
+        <h2 class="white" v-if="tvSeries.length !=0">RISULTATI IN SERIE TV</h2>
+        <div class="container d-flex serietv">
+          <div class="card" v-for="serie in tvSeries">
+
+              <!-- Stampa dei poster/avviso di non presenza del poster a schermo -->
+              <div class="poster">
+                <img v-if="serie.poster_path != null" :src="'https://image.tmdb.org/t/p/w500' + serie.poster_path" alt="" class="preview" >
+                <div v-if="serie.poster_path == null" class="white no_poster_path d-flex" class="preview">
+                  <p>{{serie.name}}</p>
+                </div>
+              </div>
+              <!-- /Stampa dei poster -->
+
+              <!-- Informazioni sui film -->
+              <div class="movie_infos">
+                <h3 class="white">{{serie.name}}</h3>
+                <p class="white">{{serie.original_title}}</p>
+                <div class="white">Lingua originale:
+                  <span class="original_lang">{{serie.original_language}}</span>
+                  <img :src="'https://www.countryflags.io/' + serie.flagsNames + '/flat/16.png'" alt="">
+                </div>
+
+                <!-- Parte riguardante il voto medio -->
+                <div class="white" v-if="serie.vote_average !=0">
+                  <span>Voto medio: {{serie.vote_average}}/10</span>
+                  <i class="fas fa-star" v-for="stars in serie.starsVote">
+                  </i><i class="far fa-star" v-for="stars in 5-serie.starsVote" class="stelle_vuote"></i>
+                </div>
+
+                <div class="white" v-if="serie.vote_average == 0">
                   <span>Voto medio: NON DISPONIBILE</span>
                 </div>
                 <!-- /Parte rigurdante il voto medio -->

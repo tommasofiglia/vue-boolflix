@@ -2,10 +2,14 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
 }
 
 body{
-  background-color: #434343;
+  min-height: 100vh;
+  background: rgb(6,6,6);
+  background: linear-gradient(180deg, rgba(6,6,6,1) 0%, rgba(20,20,20,1) 100%);
+  background-repeat: no-repeat;
   overflow-x: hidden;
 }
 /* Commons */
@@ -22,7 +26,19 @@ body{
   display: flex;
 }
 
+li{
+  list-style: none;
+}
+
+a{
+  text-decoration: none;
+}
+
 /* Utility classes */
+
+.align-center{
+  align-items: center;
+}
 
 .red{
   color: red;
@@ -34,8 +50,7 @@ body{
 
 /* Header */
 header{
-  background-color: black;
-  height: 100px;
+  height: 80px;
 }
 
 header .container{
@@ -45,9 +60,77 @@ header .container{
   align-items: center;
 }
 
-#logo{
-  width: 160px;
+header .navbar{
+  height: 100%;
+  justify-content: space-between;
+  align-items: center;
+  width: 95vw;
+  margin: auto;
 }
+
+header #logo{
+  width: 110px;
+  margin-top: 6px;
+}
+
+.navbar ul{
+  margin-left: 35px;
+}
+
+.navbar ul a{
+  margin-right: 15px;
+  text-transform: capitalize;
+  font-size: 13px;
+}
+
+.navbar ul a:hover{
+  color: #a8a8a8;
+}
+
+.navbar ul a:focus{
+  font-weight: 500;
+  color: white;
+}
+
+.navbar .right_navbar input{
+  background-color: rgba(0, 0, 0, 0);
+  border: 0;
+  width: 30px;
+  color: rgba(0, 0, 0, 0);
+  background-image: url("../img/searchicon.svg");
+  background-repeat: no-repeat;
+  cursor: pointer;
+  transition: all 0.5s ease;
+  margin-right: 10px;
+}
+
+.navbar .right_navbar input:focus{
+  background-color: black;
+  border: 1px solid white;
+  width: 220px;
+  height: 30px;
+  color: white;
+  background-image: url("../img/searchicon.svg");
+  background-repeat: no-repeat;
+  background-size: 8%;
+  background-position: 2%, 50%;
+  padding-left: 31px;
+  cursor: auto;
+}
+
+.navbar .right_navbar img{
+  width: 30px;
+  border-radius: 4px;
+}
+
+.navbar .right_navbar a{
+  color: white;
+}
+
+.navbar .right_navbar a:not(last-child){
+    margin-right: 25px;
+}
+
 
 /* Main */
 main h2{

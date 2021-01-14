@@ -21,6 +21,7 @@ let app = new Vue({
         console.log(this.tvSeries);
         console.log(response);
       });
+      this.keyWord="";
     },
     // Funzione che returna la sigla del linguaggio originale del film/serietv e , in alcuni casi particolari elencati nello switch case, cambia la sigla nel codice corrispondente al codice della bandiera dell'API per fare si che queste appaiano. Questa funzione verrà inserita nel link contenuto nell':src dell'img che deve stampare la bandierina.
     flagsCode(originalLanguage){
@@ -68,6 +69,6 @@ let app = new Vue({
       return votoStelle;
     //In questa funzione, e anche in quella sopra, avrei potuto semplicemente scrivere il valore del return(sopra pari a originalLanguage e qui pari all'operazione matematica). Ho usato delle variabili nuove (flagCode e votoStelle) solo perché a livello di ragionamento, al momento, mi trovo meglio.
     }
-}
+  }
 
 });

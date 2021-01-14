@@ -1,29 +1,48 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
-    <title>ESERCIZIO</title>
+    <title>TomFlix</title>
   </head>
   <body>
 
     <div id="app">
 
-<!-- Inizio Header -->
+      <!-- Inizio Header -->
       <header>
-        <div class="container d-flex">
+        <div class="navbar d-flex">
+          <!-- Logo e menu della navbar -->
+          <div class="logo_and_menu d-flex">
+            <a href="">
+              <img src="assets/img/logo.png" alt="" id="logo">
+            </a>
+            <ul class="white d-flex align-center">
+              <li><a href="" class="white">home</a></li>
+              <li><a href="" class="white">serie TV</a></li>
+              <li><a href="" class="white">film</a></li>
+              <li><a href="" class="white">nuovi e popolari</a></li>
+              <li><a href="" class="white">la mia lista</a></li>
+            </ul>
+          </div>
 
-          <a href=""><img src="assets/img/logo.png" alt="" id="logo"></a>
-          <div class="form">
-              <input type="text" name="" value="" placeholder="Fai una ricerca" v-model="keyWord">
-              <button type="button" name="button" @click=" search()"> Cerca</button>
+          <!-- Form con la barra di ricerca -->
+          <div class="right_navbar d-flex align-center">
+              <input type="text" name="" value="" placeholder="Titoli" v-model="keyWord" @keyup.13="search()">
+              <a href=""><i class="fas fa-gift" class="white"></i></a>
+              <a href=""><i class="fas fa-bell" class="white"></i></a>
+              <a href=""><img src="assets/img/avatar.jpg" alt=""></a>
+              <a href=""><i class="fas fa-sort-down"></i></a>
           </div>
 
         </div>
       </header>
+      <!-- Fine Header -->
 
       <!-- Inizio Main -->
       <main>

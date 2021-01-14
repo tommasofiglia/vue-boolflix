@@ -1,141 +1,73 @@
-/*******************  MILESTONE 2 *********************
-Trasformiamo poi la stringa statica della lingua in una vera e propria bandiera della
-nazione corrispondente, gestendo il caso in cui non abbiamo la bandiera della
-nazione ritornata dall’API (le flag non ci sono in FontAwesome).
-Allarghiamo poi la ricerca anche alle serie tv. Con la stessa azione di ricerca
-dovremo prendere sia i film che corrispondono alla query, sia le serie tv, stando
-attenti ad avere alla fine dei valori simili (le serie e i film hanno campi nel JSON di
-risposta diversi, simili ma non sempre identici)
-Qui un esempio di chiamata per le serie tv:
-https://api.themoviedb.org/3/search/tv?api_key=e99307154c6dfb0b4750f6603256716d&language=it_IT&query=s
-crubs
-
-******************* MILESTONE 2 **********************/
-
 let app = new Vue({
 
   el: "#app",
   data: {
     keyWord:"",
-    hover: true,
     movies: [],
     tvSeries:[]
   },
   methods:{
-    searchMovies() {
+    search() {
       axios.get('https://api.themoviedb.org/3/search/movie?api_key=d9ce04e79902ad058413bc81c0963304&language=it-IT&query=' + this.keyWord + '&page=1&include_adult=false')
       .then(response => {
         this.movies = (response.data.results);
         console.log(this.movies);
         console.log(response);
-
-        // Ciclo for Each dentro all'array movies grazie al quale:
-        // - Creo una nuova proprietà per gli oggetti che conteniene il numero di stelle da stampare a schermo corrispondenti alla votazione media.
-        // - Creo una nuova proprietà per gli oggetti di movies contenente le sigle delle bandiere corrette per utilizzare l'API di countryflags.io
-
-        this.movies.forEach(item => {
-          // Copio ciò che c'è scritto in original_language in flagsNames , dopodiché vedo se ci sono casi in cui al nome delle bandiere nell'API delle bandiere non corrisponde il nome del linguaggio originale. Sostituisco quei casi particolari in modo tale che il richiamo al link che contiene l'API (Effettuato nell'src dell'immagine tramite :src) funzioni.
-
-          let flags = item.original_language;
-          item.flagsNames = flags;
-
-          // Casi particolari, li gestisco con switch case.
-          switch (item.original_language) {
-            case "en":
-              item.flagsNames = "gb";
-              break;
-            case "ko":
-              item.flagsNames = "kr";
-              break;
-            case "ja":
-              item.flagsNames = "jp";
-              break;
-            case "zh":
-              item.flagsNames = "cn";
-              break;
-            case "da":
-              item.flagsNames = "dk";
-              break;
-            case "cs":
-              item.flagsNames = "se";
-              break;
-            case "he":
-              item.flagsNames = "ca";
-              break;
-            case "fa":
-              item.flagsNames = "ir";
-              break;
-            case "hi":
-              item.flagsNames = "in";
-              break;
-            case "ur":
-              item.flagsNames = "pk";
-              break;
-
-          }
-
-          let stars = Math.floor(item.vote_average/2);
-          return item.starsVote = stars;
-
-        });
-
       });
-    },
-    searchTvSeries() {
+
       axios.get('https://api.themoviedb.org/3/search/tv?api_key=d9ce04e79902ad058413bc81c0963304&language=it_IT&query=' + this.keyWord)
       .then(response => {
         this.tvSeries = (response.data.results);
         console.log(this.tvSeries);
         console.log(response);
-
-        this.tvSeries.forEach(item => {
-
-          let flags = item.original_language;
-          item.flagsNames = flags;
-
-          // Casi particolari, li gestisco con switch case.
-          switch (item.original_language) {
-            case "en":
-              item.flagsNames = "gb";
-              break;
-            case "ko":
-              item.flagsNames = "kr";
-              break;
-            case "ja":
-              item.flagsNames = "jp";
-              break;
-            case "zh":
-              item.flagsNames = "cn";
-              break;
-            case "da":
-              item.flagsNames = "dk";
-              break;
-            case "cs":
-              item.flagsNames = "se";
-              break;
-            case "he":
-              item.flagsNames = "ca";
-              break;
-            case "fa":
-              item.flagsNames = "ir";
-              break;
-            case "hi":
-              item.flagsNames = "in";
-              break;
-            case "ur":
-              item.flagsNames = "pk";
-              break;
-
-          }
-
-          let stars = Math.floor(item.vote_average/2);
-          return item.starsVote = stars;
-
-        });
-
       });
     },
-  },
-  mounted(){
-  }
+    // Funzione che returna la sigla del linguaggio originale del film/serietv e , in alcuni casi particolari elencati nello switch case, cambia la sigla nel codice corrispondente al codice della bandiera dell'API per fare si che queste appaiano. Questa funzione verrà inserita nel link contenuto nell':src dell'img che deve stampare la bandierina.
+    flagsCode(originalLanguage){
+
+      // Casi particolari che gestisco con switch case.
+      switch (originalLanguage) {
+        case "en":
+          return flagCode = "gb";
+          break;
+        case "ko":
+          return flagCode = "kr";
+          break;
+        case "ja":
+          return flagCode = "jp";
+          break;
+        case "zh":
+          return flagCode = "cn";
+          break;
+        case "da":
+          return flagCode = "dk";
+          break;
+        case "cs":
+          return flagCode = "se";
+          break;
+        case "he":
+          return flagCode = "ca";
+          break;
+        case "fa":
+          return flagCode = "ir";
+          break;
+        case "hi":
+          return flagCode = "in";
+          break;
+        case "ur":
+          return flagCode = "pk";
+          break;
+        default:
+          return flagCode = originalLanguage; //Caso senza eccezioni, quello default, appunto.
+          break;
+      };
+    },
+    // Funzione che returna il valore numerico corrispondente alla metà del voto medio (arrotondato per eccesso) tramite "votoStelle". Questo valore viene utilizzato nel v-for (dopo l'in) che serve a stampare le icone stella e anche, attraverso la differenza di 5-votoStelle, per stampare le restanti icone stella vuote.
+    stars(votoMedio){
+      let votoStelle = Math.ceil(votoMedio/2);
+      return votoStelle;
+    //In questa funzione, e anche in quella sopra, avrei potuto semplicemente scrivere il valore del return(sopra pari a originalLanguage e qui pari all'operazione matematica). Ho usato delle variabili nuove (flagCode e votoStelle) solo perché a livello di ragionamento, al momento, mi trovo meglio.
+    }
+}
+
 });

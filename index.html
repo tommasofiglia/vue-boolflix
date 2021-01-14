@@ -19,7 +19,7 @@
           <a href=""><img src="assets/img/logo.png" alt="" id="logo"></a>
           <div class="form">
               <input type="text" name="" value="" placeholder="Fai una ricerca" v-model="keyWord">
-              <button type="button" name="button" @click=" searchMovies(); searchTvSeries()"> Cerca</button>
+              <button type="button" name="button" @click=" search()"> Cerca</button>
           </div>
 
         </div>
@@ -48,14 +48,14 @@
                 <p class="white">{{movie.original_title}}</p>
                 <div class="white">Lingua originale:
                   <span class="original_lang">{{movie.original_language}}</span>
-                  <img :src="'https://www.countryflags.io/' + movie.flagsNames + '/flat/16.png'" alt="">
+                  <img :src="'https://www.countryflags.io/' + flagsCode(movie.original_language) + '/flat/16.png'" alt="">
                 </div>
 
                 <!-- Parte riguardante il voto medio -->
                 <div class="white" v-if="movie.vote_average !=0">
                   <span>Voto medio: {{movie.vote_average}}/10</span>
-                  <i class="fas fa-star" v-for="stars in movie.starsVote">
-                  </i><i class="far fa-star" v-for="stars in 5-movie.starsVote" class="stelle_vuote"></i>
+                  <i class="fas fa-star" v-for="stars in stars(movie.vote_average)">
+                  </i><i class="far fa-star" v-for="stars in 5-stars(movie.vote_average)" class="stelle_vuote"></i>
                 </div>
 
                 <div class="white" v-if="movie.vote_average == 0">
@@ -86,17 +86,17 @@
               <!-- Informazioni sui film -->
               <div class="movie_infos">
                 <h3 class="white">{{serie.name}}</h3>
-                <p class="white">{{serie.original_title}}</p>
+                <p class="white">{{serie.original_name}}</p>
                 <div class="white">Lingua originale:
                   <span class="original_lang">{{serie.original_language}}</span>
-                  <img :src="'https://www.countryflags.io/' + serie.flagsNames + '/flat/16.png'" alt="">
+                  <img :src="'https://www.countryflags.io/' + flagsCode(serie.original_language) + '/flat/16.png'" alt="">
                 </div>
 
                 <!-- Parte riguardante il voto medio -->
                 <div class="white" v-if="serie.vote_average !=0">
                   <span>Voto medio: {{serie.vote_average}}/10</span>
-                  <i class="fas fa-star" v-for="stars in serie.starsVote">
-                  </i><i class="far fa-star" v-for="stars in 5-serie.starsVote" class="stelle_vuote"></i>
+                  <i class="fas fa-star" v-for="stars in stars(serie.vote_average)">
+                  </i><i class="far fa-star" v-for="stars in 5-stars(serie.vote_average)" class="stelle_vuote"></i>
                 </div>
 
                 <div class="white" v-if="serie.vote_average == 0">

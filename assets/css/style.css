@@ -124,7 +124,7 @@ main .movie_infos .original_lang{
 /* Imposto che in hover i poster(o le path sostitutive nel caso in cui i poster non ci siano) si opacizzino lasciano spazio alle movie_infos */
 
 main .poster:hover img{
-  opacity: 0.2;
+  opacity: 0.05;
 }
 
 main .poster:hover .no_poster_path{

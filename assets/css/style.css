@@ -50,12 +50,20 @@ a{
   align-items: center;
 }
 
+.justify-space-around{
+  justify-content: space-between;
+}
+
 .red{
   color: red;
 }
 
 .white{
   color: white;
+}
+
+.mb-40{
+  margin-bottom: 40px;
 }
 
 /* Header */
@@ -150,7 +158,6 @@ header #logo{
     margin-right: 25px;
 }
 
-
 /* Main */
 main h2{
   margin-top: 50px;
@@ -158,10 +165,31 @@ main h2{
   margin-bottom: 20px;
 }
 
-main .container{
-  flex-wrap: wrap;
-  margin-top: 70px;
-  justify-content: space-around;
+main .arrow-left{
+  font-size: 30px;
+}
+
+main .arrow-right{
+  font-size: 30px;
+}
+
+main .arrow-right , main .arrow-left{
+  width: 5vw;
+  height: 350px;
+  position: relative;
+  cursor: pointer;
+}
+
+main .arrow-right i , main .arrow-left i{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50% , -50%);
+}
+
+main .arrow-right:hover , main .arrow-left:hover{
+  background-color: rgba(255,255,255,0.07);
+  border-radius: 7px;
 }
 
 main .poster_carousel .card{
@@ -190,14 +218,14 @@ main .poster{
 
 main .container_poster_carousel{
   overflow-x: auto;
-  width: 90vw;
+  max-width: 90vw;
   margin: auto;
 }
 
 /****** Elimino la scrollbar sui poster per tutti i browser *******/
 
 /* Chrome, Safari e Opera */
-main .container_poster_carousel::-webkit-scrollbar {
+main .container_poster_carousel::-webkit-scrollbar{
   display: none;
 }
 
@@ -211,10 +239,6 @@ main .container_poster_carousel {
 main .poster_carousel{
   width: max-content;
   height: 350px;
-}
-
-main .poster_carousel.serietv{
-  margin-bottom: 40px;
 }
 
 main .poster img{

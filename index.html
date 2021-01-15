@@ -55,7 +55,7 @@
 
                 <!-- Stampa dei poster/avviso di non presenza del poster a schermo -->
                 <div class="poster">
-                  <img v-if="movie.poster_path != 'null'" :src="'https://image.tmdb.org/t/p/w500' + movie.poster_path" alt="" class="preview" >
+                  <img v-if="movie.poster_path != null" :src="'https://image.tmdb.org/t/p/w500' + movie.poster_path" alt="" class="preview" >
                   <div v-if="movie.poster_path == null" class="white no_poster_path d-flex" class="preview">
                     <p>{{movie.title}}</p>
                   </div>

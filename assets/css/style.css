@@ -125,7 +125,7 @@ header #logo{
 .navbar .right_navbar input:focus{
   background-color: black;
   border: 1px solid white;
-  width: 220px;
+  width: 240px;
   height: 30px;
   color: white;
   background-image: url("../img/searchicon.svg");
@@ -211,6 +211,10 @@ main .container_poster_carousel {
 main .poster_carousel{
   width: max-content;
   height: 350px;
+}
+
+main .poster_carousel.serietv{
+  margin-bottom: 40px;
 }
 
 main .poster img{

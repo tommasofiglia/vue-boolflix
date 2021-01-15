@@ -7,15 +7,15 @@ let app = new Vue({
     tvSeries:[]
   },
   methods:{
-    search() {
-      axios.get('https://api.themoviedb.org/3/search/movie?api_key=d9ce04e79902ad058413bc81c0963304&language=it-IT&query=' + this.keyWord + '&page=1&include_adult=false')
+    search(word) {
+      axios.get('https://api.themoviedb.org/3/search/movie?api_key=d9ce04e79902ad058413bc81c0963304&language=it-IT&query=' + word + '&page=1&include_adult=false')
       .then(response => {
         this.movies = (response.data.results);
         console.log(this.movies);
         console.log(response);
       });
 
-      axios.get('https://api.themoviedb.org/3/search/tv?api_key=d9ce04e79902ad058413bc81c0963304&language=it_IT&query=' + this.keyWord)
+      axios.get('https://api.themoviedb.org/3/search/tv?api_key=d9ce04e79902ad058413bc81c0963304&language=it_IT&query=' + word)
       .then(response => {
         this.tvSeries = (response.data.results);
         console.log(this.tvSeries);
@@ -69,6 +69,9 @@ let app = new Vue({
       return votoStelle;
     //In questa funzione, e anche in quella sopra, avrei potuto semplicemente scrivere il valore del return(sopra pari a originalLanguage e qui pari all'operazione matematica). Ho usato delle variabili nuove (flagCode e votoStelle) solo perché a livello di ragionamento, al momento, mi trovo meglio.
     }
+  },
+  mounted(){
+    this.search("tommy");
   }
 
 });

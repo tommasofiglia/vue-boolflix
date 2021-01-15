@@ -10,7 +10,7 @@ body{
   background: rgb(6,6,6);
   background: linear-gradient(180deg, rgba(6,6,6,1) 0%, rgba(20,20,20,1) 100%);
   background-repeat: no-repeat;
-  min-width: 100%;
+  overflow-x: hidden;
 }
 /* Commons */
 #app{
@@ -104,6 +104,10 @@ header #logo{
   margin-right: 10px;
 }
 
+.navbar .right_navbar input::placeholder {
+    color: transparent;
+}
+
 .navbar .right_navbar input:focus{
   background-color: black;
   border: 1px solid white;
@@ -134,9 +138,10 @@ header #logo{
 
 /* Main */
 main h2{
-  text-align: center;
   width: 100%;
   margin-top: 50px;
+  margin-left: 5vw;
+  margin-bottom: 20px;
 }
 
 main .container{
@@ -172,10 +177,13 @@ main .poster{
 
 main .container_poster_carousel{
   overflow-x: auto;
+  width: 90vw;
+  margin: auto;
 }
 
 main .poster_carousel{
   width: max-content;
+  height: 350px;
 }
 
 main .poster img{

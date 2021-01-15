@@ -10,8 +10,21 @@ body{
   background: rgb(6,6,6);
   background: linear-gradient(180deg, rgba(6,6,6,1) 0%, rgba(20,20,20,1) 100%);
   background-repeat: no-repeat;
-  /* overflow-x: hidden; */
 }
+/********* Elimino la scrollbar sul body per tutti i browser ***********/
+
+/* Chrome, Safari e Opera */
+body::-webkit-scrollbar {
+  display: none;
+}
+
+/* IE, Edge e Firefox */
+body {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+/**********************************************************************/
+
 /* Commons */
 
 .container{
@@ -121,6 +134,7 @@ header #logo{
   background-position: 2%, 50%;
   padding-left: 31px;
   cursor: auto;
+  margin-right: 25px;
 }
 
 .navbar .right_navbar img{
@@ -166,7 +180,6 @@ main .card h3 , .card p{
   margin-bottom: 10px;
 }
 
-
 main .poster{
   position: relative;
   width: 230px;
@@ -180,6 +193,20 @@ main .container_poster_carousel{
   width: 90vw;
   margin: auto;
 }
+
+/****** Elimino la scrollbar sui poster per tutti i browser *******/
+
+/* Chrome, Safari e Opera */
+main .container_poster_carousel::-webkit-scrollbar {
+  display: none;
+}
+
+/* IE, Edge e Firefox */
+main .container_poster_carousel {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+/******************************************************************/
 
 main .poster_carousel{
   width: max-content;

@@ -49,7 +49,7 @@
 
         <!-- Parte film -->
         <h2 class="white" v-if="movies.length !=0">FILM</h2>
-        <div class="container_poster_carousel">
+        <div v-if="movies.length !=0" class="container_poster_carousel">
           <div class="poster_carousel film">
             <div class="card" v-for="movie in movies">
 
@@ -91,7 +91,7 @@
         </div>
         <!-- Parte serie tv -->
         <h2 class="white" v-if="tvSeries.length !=0">SERIE TV</h2>
-        <div class="container_poster_carousel">
+        <div v-if="tvSeries.length != 0" class="container_poster_carousel">
           <div class="poster_carousel serietv">
 
             <div class="card" v-for="serie in tvSeries">

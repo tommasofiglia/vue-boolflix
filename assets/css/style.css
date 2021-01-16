@@ -239,6 +239,7 @@ main .container_poster_carousel {
 main .poster_carousel{
   width: max-content;
   height: 350px;
+  overflow-y: hidden;
 }
 
 main .poster img{

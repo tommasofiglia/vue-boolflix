@@ -33,7 +33,7 @@
 
           <!-- Form con la barra di ricerca -->
           <div class="right_navbar d-flex align-center">
-              <input type="text" name="" value="" placeholder="Titolo di Film o Serie Tv" v-model="keyWord" @keyup.13="search(keyWord)">
+              <input type="text" name="" value="" placeholder="Titolo di Film o Serie Tv" v-model="keyWord" @keyup.13="search(keyWord);scrollReposition()">
               <a href=""><i class="fas fa-gift" class="white"></i></a>
               <a href=""><i class="fas fa-bell" class="white"></i></a>
               <a href=""><img src="assets/img/avatar.jpg" alt=""></a>
@@ -52,11 +52,11 @@
 
         <div class="d-flex align-center justify-space-between">
           <!-- Freccia sinistra -->
-          <div class="white arrow-left" v-if="movies.length > 4">
+          <div class="white arrow-left" v-if="movies.length > 4" @click="goBack('first_carousel')">
             <i class="fas fa-chevron-left"></i>
           </div>
 
-          <div v-if="movies.length !=0" class="container_poster_carousel">
+          <div v-if="movies.length !=0" class="container_poster_carousel" id="first_carousel">
             <div class="poster_carousel film">
               <div class="card" v-for="movie in movies">
 
@@ -96,7 +96,7 @@
             </div>
           </div>
           <!-- Freccia destra -->
-          <div class="white arrow-right" v-if="movies.length > 4">
+          <div class="white arrow-right" v-if="movies.length > 4" @click="goAhead('first_carousel')">
             <i class="fas fa-chevron-right"></i>
           </div>
 
@@ -106,11 +106,11 @@
         <h2 class="white" v-if="tvSeries.length !=0">SERIE TV</h2>
         <div class="d-flex align-center justify-space-between">
           <!-- Freccia sinistra -->
-          <div class="white arrow-left mb-40" v-if="tvSeries.length > 4">
+          <div class="white arrow-left mb-40" v-if="tvSeries.length > 4" @click="goBack('second_carousel')">
             <i class="fas fa-chevron-left"></i>
           </div>
 
-          <div v-if="tvSeries.length != 0" class="container_poster_carousel">
+          <div v-if="tvSeries.length != 0" class="container_poster_carousel" id="second_carousel">
             <div class="poster_carousel serietv mb-40">
               <div class="card" v-for="serie in tvSeries">
 
@@ -151,7 +151,7 @@
           </div>
 
           <!-- Freccia destra -->
-          <div class="white arrow-right mb-40" v-if="tvSeries.length > 4">
+          <div class="white arrow-right mb-40" v-if="tvSeries.length > 4" @click="goAhead('second_carousel')">
             <i class="fas fa-chevron-right"></i>
           </div>
 

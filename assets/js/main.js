@@ -68,7 +68,26 @@ let app = new Vue({
       let votoStelle = Math.ceil(votoMedio/2);
       return votoStelle;
     //In questa funzione, e anche in quella sopra, avrei potuto semplicemente scrivere il valore del return(sopra pari a originalLanguage e qui pari all'operazione matematica). Ho usato delle variabili nuove (flagCode e votoStelle) solo perché a livello di ragionamento, al momento, mi trovo meglio.
+    },
+    goAhead(carousel){
+      let scrollPosition = document.getElementById(carousel).scrollLeft;
+      document.getElementById(carousel).scrollTo({
+        left: scrollPosition + 1000,
+        behavior: 'smooth'
+      });
+    },
+    goBack(carousel){
+      let scrollPosition = document.getElementById(carousel).scrollLeft;
+      document.getElementById(carousel).scrollTo({
+        left: scrollPosition - 1000,
+        behavior: 'smooth'
+      });
+    },
+    scrollReposition(){
+      document.getElementById('first_carousel').scrollLeft = 0;
+      document.getElementById('second_carousel').scrollLeft = 0;
     }
+
   },
   mounted(){
     this.search("tommy");
